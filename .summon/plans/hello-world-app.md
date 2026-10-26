@@ -1,9 +1,15 @@
 ---
 status: pending
 title: Hello World App
+option: classic-static :: Classic Static Page :: A clean, centered "Hello, World!" page — the timeless original.
+option: interactive-greeting :: Interactive Greeting :: Type your name and get a personalized hello.
+option: multilingual :: Hello in Many Languages :: "Hello" cycles through greetings from around the world.
+recommended: classic-static
 ---
 
-A minimal single-page app that displays a styled "Hello, World!" message, built from scratch on the standard project stack.
+A minimal single-page app built from scratch on the standard project stack. Pick one of three styles for the Hello World experience.
+
+## Common steps
 
 1. Create `package.json` with the project name, ESM module type, and the standard dependencies: `react`, `react-dom`, `@tanstack/react-router`, plus dev dependencies `vite`, `@vitejs/plugin-react`, `@tanstack/router-plugin`, `typescript`, `tailwindcss`, and `@tailwindcss/vite`. Add `dev`, `build`, and `preview` scripts.
    - Expected outcome: the platform can install dependencies and start the dev server.
@@ -26,11 +32,32 @@ A minimal single-page app that displays a styled "Hello, World!" message, built 
 7. Create `src/routes/__root.tsx` as the app shell: a root route rendering an `<Outlet />` inside a full-viewport wrapper.
    - Expected outcome: every page renders inside a consistent shell that fills the screen.
 
-8. Create `src/routes/index.tsx` as the home route (`/`) showing a centered "Hello, World!" heading with a short welcoming subline, styled with Tailwind (large bold type, centered layout, pleasant background).
-   - Expected outcome: visiting the app shows the Hello World page, nicely centered and styled.
-
-9. Do not create or edit `src/routeTree.gen.ts` — the TanStack Router Vite plugin generates it automatically on first run.
+8. Do not create or edit `src/routeTree.gen.ts` — the TanStack Router Vite plugin generates it automatically on first run.
    - Expected outcome: routing works without manual route-tree maintenance.
 
-10. Verify the app typechecks and the home page renders the Hello World message in the browser.
-    - Expected outcome: a working app showing "Hello, World!" at `/`.
+9. Verify the app typechecks and the home page renders correctly in the browser.
+   - Expected outcome: a working app at `/`.
+
+## Option: Classic Static Page
+
+1. Create `src/routes/index.tsx` as the home route (`/`) showing a centered "Hello, World!" heading with a short welcoming subline, styled with Tailwind (large bold type, centered layout, pleasant gradient background).
+   - Expected outcome: visiting the app shows a nicely centered, styled "Hello, World!" page.
+
+## Option: Interactive Greeting
+
+1. Create `src/components/GreetingForm.tsx` with a text input for the visitor's name and a button; while empty it shows "Hello, World!", and after submitting it shows "Hello, <name>!" with a friendly animation. Handle empty input gracefully by falling back to "World".
+   - Expected outcome: the visitor can type their name and see a personalized greeting.
+
+2. Create `src/routes/index.tsx` as the home route (`/`) rendering the greeting component centered on the page with a welcoming heading, styled with Tailwind.
+   - Expected outcome: visiting the app shows the interactive greeting experience.
+
+## Option: Hello in Many Languages
+
+1. Create `src/lib/greetings.ts` with a list of greetings in many languages (e.g. Hello, Hola, Bonjour, こんにちは, مرحبا, Ciao, 안녕하세요, Olá, Hallo, नमस्ते), each with its language name.
+   - Expected outcome: a reusable greeting collection exists.
+
+2. Create `src/components/RotatingGreeting.tsx` that cycles through the greetings automatically every couple of seconds with a smooth fade transition, showing the greeting large and the language name beneath it, plus a button to shuffle manually.
+   - Expected outcome: greetings rotate on screen automatically and can be shuffled by click.
+
+3. Create `src/routes/index.tsx` as the home route (`/`) rendering the rotating greeting centered on the page, styled with Tailwind.
+   - Expected outcome: visiting the app shows "Hello" from around the world, changing on its own.
