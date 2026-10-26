@@ -5,6 +5,7 @@ option: classic-static :: Classic Static Page :: A clean, centered "Hello, World
 option: interactive-greeting :: Interactive Greeting :: Type your name and get a personalized hello.
 option: multilingual :: Hello in Many Languages :: "Hello" cycles through greetings from around the world.
 recommended: classic-static
+selected: classic-static
 ---
 
 A minimal single-page app built from scratch on the standard project stack. Pick one of three styles for the Hello World experience.
